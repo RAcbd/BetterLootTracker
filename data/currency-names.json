@@ -28,7 +28,9 @@
     "OmenOnDeathPreventExpLoss": "Omen of Amelioration",
     "OmenOnChanceAncientOrb": "Omen of the Ancients",
     "OmenOnChaosMapMonsterRarity": "Omen of Chaotic Monsters",
-    "OmenOnLowLifeFullyHeal": "Omen of Resurgence"
+    "OmenOnLowLifeFullyHeal": "Omen of Resurgence",
+    "CurrencyAfflictionShard": "Simulacrum Splinter",
+    "AbyssalBenchTicketJewellery": "Preserved Collarbone"
   },
   "byNinjaId": {
     "aug": "Orb of Augmentation",
@@ -51,6 +53,9 @@
     "OmenOnChaosMapMonsterRarity": "omen-of-chaotic-monsters",
     "OmenOnLowLifeFullyHeal": "omen-of-resurgence",
     "CurrencyCorrupt": "vaal",
-    "CurrencyRerollRare": "chaos"
+    "CurrencyRerollRare": "chaos",
+    "CurrencyAfflictionShard": "simulacrum-splinter",
+    "AbyssalBenchTicketJewellery": "preserved-collarbone",
+    "OmenOnLowLifeRecoverCharges": "omen-of-refreshment"
   }
 }

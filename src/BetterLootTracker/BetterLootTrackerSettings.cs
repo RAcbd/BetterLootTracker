@@ -5,6 +5,8 @@ using System.Numerics;
 public sealed class BetterLootTrackerSettings
 {
     public bool ShowOverlay = true;
+
+    public bool DrawOnlyInHideout;
     public bool PauseInTown = true;
     public bool ShowDivineEquivalent = true;
     public bool UseNinjaPricerData = true;

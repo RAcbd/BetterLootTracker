@@ -20,7 +20,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
     private FileInfo settingsFile = null!;
     private string selectedSessionId = string.Empty;
 
-    public override string Version => "1.8.2";
+    public override string Version => "1.8.3";
 
     public override string Name => $"U | BetterLootTracker | v{Version}";
 
@@ -90,6 +90,12 @@ public sealed class BetterLootTrackerPlugin : PluginBase
     public override void DrawSettings()
     {
         ImGui.Checkbox("Show HUD overlay", ref settings.ShowOverlay);
+        if (settings.ShowOverlay)
+        {
+            ImGui.Indent();
+            ImGui.Checkbox("Draw only in hideout", ref settings.DrawOnlyInHideout);
+            ImGui.Unindent();
+        }
         ImGui.Checkbox("Pause tracking in towns", ref settings.PauseInTown);
         ImGui.Checkbox("Show divine equivalent", ref settings.ShowDivineEquivalent);
         ImGui.Checkbox("Show currency lines on HUD", ref settings.ShowHudCurrencyLines);
@@ -154,7 +160,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
             return;
         }
 
-        if (!LootHudVisibility.CanDrawOverlay())
+        if (!LootHudVisibility.CanDrawOverlay(settings))
         {
             return;
         }

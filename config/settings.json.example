@@ -1,5 +1,6 @@
 {
   "ShowOverlay": true,
+  "DrawOnlyInHideout": false,
   "PauseInTown": true,
   "ShowDivineEquivalent": true,
   "UseNinjaPricerData": true,
