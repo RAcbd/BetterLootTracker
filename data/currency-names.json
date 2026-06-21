@@ -50,6 +50,7 @@
     "OmenOnChanceAncientOrb": "omen-of-the-ancients",
     "OmenOnChaosMapMonsterRarity": "omen-of-chaotic-monsters",
     "OmenOnLowLifeFullyHeal": "omen-of-resurgence",
-    "CurrencyCorrupt": "vaal"
+    "CurrencyCorrupt": "vaal",
+    "CurrencyRerollRare": "chaos"
   }
 }
