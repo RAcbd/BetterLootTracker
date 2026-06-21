@@ -1,0 +1,72 @@
+{
+  "Id": "2026-06-21_14-12-32",
+  "SavedAtUtc": "2026-06-21T14:12:32.9785561Z",
+  "LastZoneName": "Plantation",
+  "Session": {
+    "QuantitiesByPath": {
+      "Metadata/Items/Currency/CurrencyModValues": 1,
+      "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": 1,
+      "Metadata/Items/Currency/CurrencyUpgradeToRare": 1,
+      "Metadata/Items/Currency/CurrencyCorrupt": 1,
+      "Metadata/Items/Currency/CurrencyAddModToRare": 1
+    },
+    "DisplayNamesByPath": {
+      "Metadata/Items/Currency/CurrencyModValues": "Divine Orb",
+      "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "Perfect Jeweller's Orb",
+      "Metadata/Items/Currency/CurrencyUpgradeToRare": "Upgrade To Rare",
+      "Metadata/Items/Currency/CurrencyCorrupt": "Vaal Orb",
+      "Metadata/Items/Currency/CurrencyAddModToRare": "Exalted Orb"
+    },
+    "PriceIdsByPath": {
+      "Metadata/Items/Currency/CurrencyModValues": "divine",
+      "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "perfect-jewellers-orb",
+      "Metadata/Items/Currency/CurrencyUpgradeToRare": "regal",
+      "Metadata/Items/Currency/CurrencyCorrupt": "vaal",
+      "Metadata/Items/Currency/CurrencyAddModToRare": "exalted"
+    },
+    "DivineEquivalent": 1.3231780000000002,
+    "PickupCount": 5
+  },
+  "BestMap": {
+    "ZoneName": "Lost Towers",
+    "AreaId": "MapLostTowers",
+    "Loot": {
+      "QuantitiesByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": 1,
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": 1
+      },
+      "DisplayNamesByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": "Divine Orb",
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "Perfect Jeweller's Orb"
+      },
+      "PriceIdsByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": "divine",
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "perfect-jewellers-orb"
+      },
+      "DivineEquivalent": 1.3067,
+      "PickupCount": 2
+    },
+    "CompletedUtc": "2026-06-21T14:07:26.6393929Z"
+  },
+  "LastMap": {
+    "ZoneName": "Lost Towers",
+    "AreaId": "MapLostTowers",
+    "Loot": {
+      "QuantitiesByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": 1,
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": 1
+      },
+      "DisplayNamesByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": "Divine Orb",
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "Perfect Jeweller's Orb"
+      },
+      "PriceIdsByPath": {
+        "Metadata/Items/Currency/CurrencyModValues": "divine",
+        "Metadata/Items/Currency/CurrencyAddSkillGemSocket5": "perfect-jewellers-orb"
+      },
+      "DivineEquivalent": 1.3067,
+      "PickupCount": 2
+    },
+    "CompletedUtc": "2026-06-21T14:07:26.6391951Z"
+  }
+}

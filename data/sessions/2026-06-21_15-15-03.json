@@ -1,0 +1,20 @@
+{
+  "Id": "2026-06-21_15-15-03",
+  "SavedAtUtc": "2026-06-21T15:15:03.7081189Z",
+  "LastZoneName": "Precursor Tower",
+  "Session": {
+    "QuantitiesByPath": {
+      "Metadata/Items/Currency/OmenOnDeathPreventExpLoss": 9
+    },
+    "DisplayNamesByPath": {
+      "Metadata/Items/Currency/OmenOnDeathPreventExpLoss": "Omen of Amelioration"
+    },
+    "PriceIdsByPath": {
+      "Metadata/Items/Currency/OmenOnDeathPreventExpLoss": "omen-of-amelioration"
+    },
+    "DivineEquivalent": 0.3249,
+    "PickupCount": 9
+  },
+  "BestMap": null,
+  "LastMap": null
+}
