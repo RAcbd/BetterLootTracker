@@ -2,6 +2,8 @@ namespace BetterLootTracker;
 
 using OriathHub.RemoteObjects.States.InGameStateObjects;
 using OriathHub.Utils;
+using OriathPlugins.Common.Inventory;
+using OriathPlugins.Common.Pricing;
 
 internal sealed class LootTrackerService
 {

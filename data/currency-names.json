@@ -30,7 +30,17 @@
     "OmenOnChaosMapMonsterRarity": "Omen of Chaotic Monsters",
     "OmenOnLowLifeFullyHeal": "Omen of Resurgence",
     "CurrencyAfflictionShard": "Simulacrum Splinter",
-    "AbyssalBenchTicketJewellery": "Preserved Collarbone"
+    "AbyssalBenchTicketJewellery": "Preserved Collarbone",
+    "CurrencyVerisiumMetalUnique1": "Medved's Crest of the Circle",
+    "CurrencyUpgradeRandomly": "Orb of Chance",
+    "OmenOnExaltAddTwoMods": "Omen of Greater Exaltation",
+    "CurrencyUpgradeToMagic3": "Perfect Orb of Transmutation",
+    "OmenOnChaosMapMonsterEffectiveness": "Omen of Chaotic Effectiveness",
+    "OmenSellVendorRandomise": "Omen of Bartering",
+    "OmenOnChaosMapPackSize": "Omen of Chaotic Quantity",
+    "EndgameDistilledEmotion3": "Potent Liquid Contempt",
+    "CurrencyRemoveMod": "Orb of Annulment",
+    "DistilledEmotionTimeLost2": "Ancient Diluted Liquid Guilt"
   },
   "byNinjaId": {
     "aug": "Orb of Augmentation",
@@ -56,6 +66,24 @@
     "CurrencyRerollRare": "chaos",
     "CurrencyAfflictionShard": "simulacrum-splinter",
     "AbyssalBenchTicketJewellery": "preserved-collarbone",
-    "OmenOnLowLifeRecoverCharges": "omen-of-refreshment"
+    "OmenOnLowLifeRecoverCharges": "omen-of-refreshment",
+    "CurrencyVerisiumMetalUnique1": "medveds-crest-of-the-circle",
+    "CurrencyUpgradeRandomly": "chance",
+    "OmenGambleNoGoldCost": "omen-of-gambling",
+    "CurrencyModValues": "divine",
+    "CurrencyAddModToMagic3": "perfect-orb-of-augmentation",
+    "OmenOnExaltAddTwoMods": "omen-of-greater-exaltation",
+    "CurrencyUpgradeToMagic3": "perfect-orb-of-transmutation",
+    "CurrencyAddModToMagic2": "greater-orb-of-augmentation",
+    "OmenOnChaosMapMonsterEffectiveness": "omen-of-chaotic-effectiveness",
+    "OmenSellVendorRandomise": "omen-of-bartering",
+    "OmenOnExaltAddSuffixes": "omen-of-dextral-exaltation",
+    "OmenOnChaosMapPackSize": "omen-of-chaotic-quantity",
+    "EndgameDistilledEmotion3": "potent-liquid-contempt",
+    "CurrencyRemoveMod": "annul",
+    "DistilledEmotionTimeLost2": "ancient-diluted-liquid-guilt",
+    "CurrencyAddModToRare": "exalted",
+    "CurrencyUpgradeToRare": "regal",
+    "CurrencyIdentification": "wisdom"
   }
 }

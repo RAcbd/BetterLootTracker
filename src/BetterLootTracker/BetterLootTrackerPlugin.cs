@@ -9,6 +9,7 @@ using OriathHub.CoroutineEvents;
 using OriathHub.Plugin;
 using OriathHub.RemoteEnums;
 using OriathHub.Utils;
+using OriathPlugins.Common.Pricing;
 
 public sealed class BetterLootTrackerPlugin : PluginBase
 {

@@ -5,6 +5,8 @@ using OriathHub.RemoteEnums.Entity;
 using OriathHub.RemoteObjects.Components;
 using OriathHub.RemoteObjects.States.InGameStateObjects;
 using OriathHub.Utils;
+using OriathPlugins.Common.Inventory;
+using OriathPlugins.Common.Pricing;
 
 internal readonly record struct CurrencyPickup(
     string ItemPath,
@@ -188,11 +190,7 @@ internal sealed class WorldPickupTracker
             return false;
         }
 
-        var quantity = ItemStackCountReader.Read(entity.Address);
-        if (entity.TryGetComponent<Stack>(out var stack) && stack.Count > quantity)
-        {
-            quantity = stack.Count;
-        }
+        var quantity = ItemStackCountReader.Read(entity);
 
         var priceId = CurrencyPathMapper.TryMapToNinjaId(path, priceCatalog);
         var displayName = CurrencyPathMapper.GetDisplayName(path, priceCatalog.TryGetDisplayName(priceId));
