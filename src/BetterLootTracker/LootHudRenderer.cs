@@ -158,6 +158,12 @@ internal static class LootHudRenderer
     {
         var lines = new List<HudLine>(32);
 
+        AppendRecentPickupsSection(lines, settings, state, tracker);
+        if (lines.Count > 0)
+        {
+            AppendSpacer(lines);
+        }
+
         AppendMapSection(lines, "Best Map", state.BestMap.ZoneName, state.BestMap.Loot, state.BestMap.HasCurrency, settings, tracker, colorCodeMapValue: true);
         AppendSpacer(lines);
         AppendCurrentMapSection(lines, state, settings, tracker);
@@ -187,11 +193,76 @@ internal static class LootHudRenderer
         {
             lines.Add(new HudLine(
                 HudLineType.Plain,
-                state.TrackingPaused ? "Tracking paused in town or hideout." : "No currency tracked yet.",
+                state.TrackingPaused ? "Tracking paused in town or hideout." : "No loot tracked yet.",
                 IsMuted: true));
         }
 
         return lines;
+    }
+
+    private static void AppendRecentPickupsSection(
+        List<HudLine> lines,
+        BetterLootTrackerSettings settings,
+        SessionLootState state,
+        LootTrackerService tracker)
+    {
+        if (!settings.ShowRecentPickupsOnHud || state.RecentPickups.Count == 0)
+        {
+            return;
+        }
+
+        lines.Add(new HudLine(HudLineType.Plain, "Recent loot", IsHeader: true));
+        lines.Add(new HudLine(
+            HudLineType.CurrencyHeader,
+            IsMuted: true,
+            Item: "Item",
+            Qty: "Qty",
+            Price: "Price"));
+
+        foreach (var pickup in state.RecentPickups.Take(settings.HudMaxRecentPickupLines))
+        {
+            var priceText = FormatPickupPrice(pickup, settings, tracker);
+            lines.Add(new HudLine(
+                HudLineType.CurrencyRow,
+                Item: pickup.DisplayName,
+                Qty: pickup.Quantity.ToString(),
+                Price: priceText));
+        }
+
+        if (settings.ShowDivineEquivalent && tracker.HasPriceData && state.Session.DivineEquivalent > 0)
+        {
+            var sessionTotal = tracker.GetDisplayedValue(state.Session.DivineEquivalent, settings.ValueUnit);
+            var suffix = tracker.GetValueSuffix(settings.ValueUnit);
+            lines.Add(new HudLine(
+                HudLineType.Plain,
+                $"Session total: {sessionTotal:0.###}{suffix}",
+                IsHeader: true));
+        }
+    }
+
+    private static string FormatPickupPrice(
+        LootEntry pickup,
+        BetterLootTrackerSettings settings,
+        LootTrackerService tracker)
+    {
+        if (!settings.ShowDivineEquivalent || !tracker.HasPriceData)
+        {
+            return "—";
+        }
+
+        if (pickup.DivineValue > 0)
+        {
+            var displayed = tracker.GetDisplayedValue(pickup.DivineValue, settings.ValueUnit);
+            return $"{displayed:0.###}{tracker.GetValueSuffix(settings.ValueUnit)}";
+        }
+
+        if (tracker.TryGetDivineUnitValue(pickup.PriceId, pickup.ItemPath, out var unitValue) && unitValue > 0)
+        {
+            var lineValue = tracker.GetDisplayedValue(unitValue * pickup.Quantity, settings.ValueUnit);
+            return $"{lineValue:0.###}{tracker.GetValueSuffix(settings.ValueUnit)}";
+        }
+
+        return "—";
     }
 
     private static void AppendCurrentMapSection(
@@ -205,7 +276,7 @@ internal static class LootHudRenderer
 
         if (!state.CurrentMap.HasLoot)
         {
-            lines.Add(new HudLine(HudLineType.Plain, "No currency tracked yet.", IsMuted: true));
+            lines.Add(new HudLine(HudLineType.Plain, "No loot tracked yet.", IsMuted: true));
             return;
         }
 
@@ -228,7 +299,7 @@ internal static class LootHudRenderer
 
         if (!hasCurrency)
         {
-            lines.Add(new HudLine(HudLineType.Plain, "No currency tracked yet.", IsMuted: true));
+            lines.Add(new HudLine(HudLineType.Plain, "No loot tracked yet.", IsMuted: true));
             return;
         }
 
@@ -247,7 +318,7 @@ internal static class LootHudRenderer
 
         if (!totals.HasLoot)
         {
-            lines.Add(new HudLine(HudLineType.Plain, "No currency tracked yet.", IsMuted: true));
+            lines.Add(new HudLine(HudLineType.Plain, "No loot tracked yet.", IsMuted: true));
             return;
         }
 
@@ -309,7 +380,7 @@ internal static class LootHudRenderer
             var quantity = totals.QuantitiesByPath[itemPath];
             var displayName = tracker.GetItemDisplayName(itemPath, totals);
             var priceId = tracker.ResolvePriceId(itemPath, totals);
-            var hasUnitValue = tracker.TryGetDivineUnitValue(priceId, out var divineUnitValue);
+            var hasUnitValue = tracker.TryGetDivineUnitValue(priceId, itemPath, out var divineUnitValue);
 
             string priceText;
             if (settings.ShowDivineEquivalent && hasUnitValue && divineUnitValue > 0)

@@ -21,13 +21,9 @@ public sealed class BetterLootTrackerPlugin : PluginBase
     private FileInfo settingsFile = null!;
     private string selectedSessionId = string.Empty;
 
-    public override string Version => "1.8.3";
+    public override string Name => "BetterLootTracker";
 
-    public override string Name => $"U | BetterLootTracker | v{Version}";
-
-    public override string Description => "Tracks currency looted per map and session.";
-
-    public override string Author => "Raff";
+    public override string Description => "Tracks loot per map and session with host pricing and HUD overlay.";
 
     public override void OnEnable(bool isGameOpened)
     {
@@ -39,6 +35,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
         state.ResetSession();
 
         updateCoroutine = CoroutineHandler.Start(OnPerFrameUpdate(), $"{Name}.Update");
+        CoroutineHandler.Start(OnAreaChange(), $"{Name}.AreaChange");
     }
 
     public override void OnDisable()
@@ -79,8 +76,9 @@ public sealed class BetterLootTrackerPlugin : PluginBase
         }
 
         ImGui.TextDisabled(tracker.PriceStatusMessage);
+        ImGui.TextDisabled($"Pricing league: {tracker.ActiveLeague}");
         ImGui.TextDisabled($"Currency names: {tracker.CurrencyNamesFilePath}");
-        ImGui.TextDisabled("Prices resolve from game data and NinjaPricer league files.");
+        ImGui.TextDisabled("Prices come from OriathHub Core.Prices (poe.ninja).");
         ImGui.TextDisabled("Manual override: byPathNinjaId in currency-names.json.");
         if (state.TrackingPaused)
         {
@@ -100,8 +98,8 @@ public sealed class BetterLootTrackerPlugin : PluginBase
         ImGui.Checkbox("Pause tracking in towns", ref settings.PauseInTown);
         ImGui.Checkbox("Show divine equivalent", ref settings.ShowDivineEquivalent);
         ImGui.Checkbox("Show currency lines on HUD", ref settings.ShowHudCurrencyLines);
+        ImGui.Checkbox("Show recent pickups on HUD", ref settings.ShowRecentPickupsOnHud);
         ImGui.Checkbox("Show last session instead of last map", ref settings.ShowLastSessionInsteadOfLastMap);
-        ImGui.Checkbox("Use NinjaPricer data", ref settings.UseNinjaPricerData);
         ImGui.Checkbox("Debug logging", ref settings.EnableDebugLogging);
 
         ImGui.DragFloat2("HUD position", ref settings.DrawPosition, 1f);
@@ -109,9 +107,9 @@ public sealed class BetterLootTrackerPlugin : PluginBase
         ImGui.ColorEdit4("HUD background", ref settings.DefaultBackgroundColor);
         ImGui.ColorEdit4("HUD text color", ref settings.DefaultFontColor);
         ImGui.SliderInt("HUD currency lines", ref settings.HudMaxCurrencyLines, 0, 12);
+        ImGui.SliderInt("HUD recent pickup lines", ref settings.HudMaxRecentPickupLines, 0, 20);
         ImGui.DragFloat("Pickup distance", ref settings.PickupDistance, 1f, 50f, 300f);
 
-        ImGui.InputText("Ninja league", ref settings.NinjaLeague, 128);
         ImGui.SliderInt("Recent pickups shown", ref settings.MaxRecentEntries, 5, 50);
 
         var unitIndex = settings.ValueUnit.ToLowerInvariant() switch
@@ -319,7 +317,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
                 var quantity = totals.QuantitiesByPath[itemPath];
                 var displayName = tracker.GetItemDisplayName(itemPath, totals);
                 var priceId = tracker.ResolvePriceId(itemPath, totals);
-                var hasUnitValue = tracker.TryGetDivineUnitValue(priceId, out var divineUnitValue);
+                var hasUnitValue = tracker.TryGetDivineUnitValue(priceId, itemPath, out var divineUnitValue);
 
                 ImGui.TableNextRow();
                 ImGui.TableNextColumn();
@@ -345,8 +343,9 @@ public sealed class BetterLootTrackerPlugin : PluginBase
 
     private void DrawCurrencyFilterSettings()
     {
-        ImGui.Text("Currencies to track");
+        ImGui.Text("Loot to track");
         ImGui.Checkbox("Track all currencies", ref settings.TrackAllCurrencies);
+        ImGui.Checkbox("Track gear and uniques", ref settings.TrackAllLoot);
 
         if (settings.TrackAllCurrencies)
         {
@@ -355,7 +354,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
 
         if (!tracker.HasPriceData)
         {
-            ImGui.TextDisabled("Load NinjaPricer data to configure the currency list.");
+            ImGui.TextDisabled("Load host prices to configure the currency list.");
             return;
         }
 
@@ -417,9 +416,9 @@ public sealed class BetterLootTrackerPlugin : PluginBase
                     }
                 }
             }
-        }
 
-        ImGui.EndChild();
+            ImGui.EndChild();
+        }
         ImGui.TextDisabled($"{settings.TrackedCurrencyIds.Count} currencies selected");
     }
 
@@ -435,16 +434,17 @@ public sealed class BetterLootTrackerPlugin : PluginBase
 
     private void ReloadPrices()
     {
-        if (!settings.UseNinjaPricerData)
-        {
-            tracker.ReloadPrices(string.Empty);
-            return;
-        }
-
-        var pluginsRoot = NinjaPriceLoader.GetPluginsRootFromDllDirectory(DllDirectory);
-        var leagueDataDirectory = NinjaPriceLoader.GetLeagueDataDirectory(pluginsRoot, settings.NinjaLeague);
-        tracker.ReloadPrices(leagueDataDirectory);
+        tracker.RefreshPrices();
         tracker.RefreshStoredPrices(state);
+    }
+
+    private IEnumerator<Wait> OnAreaChange()
+    {
+        while (true)
+        {
+            yield return new Wait(RemoteEvents.AreaChanged);
+            tracker.OnAreaChanged(state);
+        }
     }
 
     private IEnumerator<Wait> OnPerFrameUpdate()

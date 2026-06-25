@@ -9,12 +9,12 @@ public sealed class BetterLootTrackerSettings
     public bool DrawOnlyInHideout;
     public bool PauseInTown = true;
     public bool ShowDivineEquivalent = true;
-    public bool UseNinjaPricerData = true;
     public bool TrackAllCurrencies = true;
+    public bool TrackAllLoot = true;
     public bool ShowHudCurrencyLines = true;
+    public bool ShowRecentPickupsOnHud = true;
     public bool ShowLastSessionInsteadOfLastMap = false;
     public bool EnableDebugLogging = false;
-    public string NinjaLeague = "Runes of Aldur";
     public string ValueUnit = "divine";
     public string CurrencyFilterSearch = string.Empty;
     public List<string> TrackedCurrencyIds = [];
@@ -29,5 +29,6 @@ public sealed class BetterLootTrackerSettings
     public float PickupDistance = 180f;
     public float HudFontSize = 16f;
     public int HudMaxCurrencyLines = 6;
+    public int HudMaxRecentPickupLines = 12;
     public int MaxRecentEntries = 25;
 }
