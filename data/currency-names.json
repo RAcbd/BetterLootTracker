@@ -40,7 +40,12 @@
     "OmenOnChaosMapPackSize": "Omen of Chaotic Quantity",
     "EndgameDistilledEmotion3": "Potent Liquid Contempt",
     "CurrencyRemoveMod": "Orb of Annulment",
-    "DistilledEmotionTimeLost2": "Ancient Diluted Liquid Guilt"
+    "DistilledEmotionTimeLost2": "Ancient Diluted Liquid Guilt",
+    "MapKeyTier15": "Waystone (Tier 15)",
+    "FourBelt3": "Wide Belt",
+    "FourBelt9": "Heavy Belt",
+    "JewelDex": "Emerald",
+    "JewelInt": "Sapphire"
   },
   "byNinjaId": {
     "aug": "Orb of Augmentation",
