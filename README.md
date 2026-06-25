@@ -3,7 +3,7 @@
 OriathHub plugin for Path of Exile 2 that tracks currency loot per map and session, with NinjaPricer integration and an in-game HUD overlay.
 
 **Author:** Raff  
-**Version:** 1.9.2
+**Version:** 1.9.3
 
 ## Features
 

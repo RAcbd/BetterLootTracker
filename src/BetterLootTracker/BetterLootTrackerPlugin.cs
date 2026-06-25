@@ -25,6 +25,10 @@ public sealed class BetterLootTrackerPlugin : PluginBase
 
     public override string Description => "Tracks loot per map and session with host pricing and HUD overlay.";
 
+    public override string Author => "Raff";
+
+    public override string Version => "1.9.3";
+
     public override void OnEnable(bool isGameOpened)
     {
         settingsFile = new FileInfo(Path.Combine(DllDirectory, "config", "settings.json"));
