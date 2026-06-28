@@ -1,6 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>Library</OutputType>
+    <!-- net10.0-windows to match the host; its APIs are [SupportedOSPlatform("windows")], so a
+         plain net10.0 plugin raises CA1416 on every host call. -->
     <TargetFramework>net10.0-windows</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
@@ -8,6 +11,7 @@
     <RootNamespace>BetterLootTracker</RootNamespace>
     <AssemblyName>BetterLootTracker</AssemblyName>
     <NoWarn>1701;1702;1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +22,9 @@
 
   <Import Project="ILRepack.targets" />
 
-  <!-- Marketplace passes -p:OriathHubDir at build time; local builds use Directory.Build.props default. -->
+  <!-- Deploy the plugin DLL into the running host's Plugins/ folder. Pass -p:OriathHubDir="<path>\" at build time. -->
   <Target Name="CopyToHostPluginsDir" AfterTargets="Build" Condition="'$(OriathHubDir)' != ''">
-    <Copy SourceFiles="$(TargetPath)"
+    <Copy SourceFiles="$(OutDir)$(TargetName)$(TargetExt)"
           DestinationFolder="$(OriathHubDir)\Plugins\$(AssemblyName)"
           SkipUnchangedFiles="true" />
   </Target>
