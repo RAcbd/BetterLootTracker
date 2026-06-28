@@ -1,6 +1,6 @@
 # BetterLootTracker
 
-OriathHub plugin for Path of Exile 2 that tracks currency loot per map and session, with NinjaPricer integration and an in-game HUD overlay.
+OriathHub plugin for Path of Exile 2 that tracks currency loot per map and session, with host pricing and an in-game HUD overlay.
 
 **Author:** Raff  
 **Version:** 1.9.4
@@ -11,27 +11,32 @@ OriathHub plugin for Path of Exile 2 that tracks currency loot per map and sessi
 - Best map, last map, and current map tracking
 - HUD overlay with sortable currency table (Item | Qty | Price)
 - Configurable map value threshold (green / red rating)
-- NinjaPricer price matching via game data + league JSON files
+- Host pricing via OriathHub `Core.Prices`
 - Session history saved on reset
 
 ## Requirements
 
-- [OriathHub](https://github.com/danthespal/OriathHubSDK) with a valid license
-- [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- [NinjaPricer](https://github.com/danthespal/OriathHubSDK) plugin (for live prices)
+- [OriathHub](https://github.com/danthespal/OriathHubSDK) with SDK 0.10.1+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) (build from source only)
 
-## Install (binary)
+## Install
 
-1. Download **`BetterLootTracker-1.9.4.zip`** (recommended) or `BetterLootTracker.dll` + `OriathPlugins.Common.dll` from [Releases](https://github.com/RAcbd/BetterLootTracker/releases), or build from source (below).
-2. Extract or copy into your OriathHub `Plugins/` folder so you have:
-   ```
-   Plugins/BetterLootTracker/
-     BetterLootTracker.dll
-     OriathPlugins.Common.dll
-     config/settings.json.example   → copy to settings.json
-     data/currency-names.json
-   ```
-3. Enable the plugin in OriathHub and set your Ninja league in settings.
+**OriathHub Marketplace (recommended):** install or update from the in-app catalog. Marketplace builds from this repo’s source, or installs the latest [Release zip](https://github.com/RAcbd/BetterLootTracker/releases).
+
+**Manual from Release:** download `BetterLootTracker-<version>.zip` from [Releases](https://github.com/RAcbd/BetterLootTracker/releases) and extract into your OriathHub `Plugins/` folder.
+
+**Manual from source:** clone this repo and build (see below), then copy the output DLLs plus `config/` and `data/` into `Plugins/BetterLootTracker/`.
+
+## Repository layout
+
+This repo is **source only**. DLLs and release zips are not committed — they are published on [GitHub Releases](https://github.com/RAcbd/BetterLootTracker/releases) when tagged.
+
+```
+BetterLootTracker/
+  src/BetterLootTracker/   # C# source
+  config/                  # Example settings
+  data/                    # Default currency name mappings
+```
 
 ## Build from source
 
@@ -41,28 +46,14 @@ dotnet restore
 dotnet build -c Release
 ```
 
-The built DLL is at `src/BetterLootTracker/bin/Release/net10.0-windows/BetterLootTracker.dll`.
-
-Copy it to your OriathHub `Plugins/BetterLootTracker/` folder along with `config/` and `data/`.
-
 ## Configuration
 
 | File | Purpose |
 |------|---------|
 | `config/settings.json` | Plugin settings (created on first run; see `config/settings.json.example`) |
-| `data/currency-names.json` | Display name overrides and manual Ninja ID links (`byPath`, `byPathNinjaId`) |
+| `data/currency-names.json` | Display name overrides and manual price ID links (`byPath`, `byPathNinjaId`) |
 
 Most currencies are priced automatically. If an item shows `—`, add a `byPathNinjaId` entry with the poe.ninja item id, then click **Reload currency names** in the dashboard.
-
-## Development layout
-
-```
-BetterLootTracker/
-  src/BetterLootTracker/   # C# source
-  data/                    # Default currency name mappings
-  config/                  # Example settings
-  BetterLootTracker.dll    # Pre-built release (optional)
-```
 
 ## License
 
