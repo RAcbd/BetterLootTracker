@@ -45,7 +45,18 @@
     "FourBelt3": "Wide Belt",
     "FourBelt9": "Heavy Belt",
     "JewelDex": "Emerald",
-    "JewelInt": "Sapphire"
+    "JewelInt": "Sapphire",
+    "FourBodyInt3Endgame": "Four Body Int3 Endgame",
+    "FourBootsInt2Endgame": "Four Boots Int2 Endgame",
+    "OmenOnAnnulRemoveAbyssMod": "Omen of Light",
+    "OmenOnAbyssRerollOptions": "Omen of Abyssal Echoes",
+    "RuneUpgrade": "Masterwork Rune",
+    "JewelStr": "Jewel Str",
+    "FourBow10": "Four Bow10",
+    "FourQuarterstaff3Endgame": "Four Quarterstaff3 Endgame",
+    "FourHelmetDexInt5Endgame": "Four Helmet Dex Int5 Endgame",
+    "FourAmulet4": "Four Amulet4",
+    "FourRing9": "Four Ring9"
   },
   "byNinjaId": {
     "aug": "Orb of Augmentation",
@@ -89,6 +100,21 @@
     "DistilledEmotionTimeLost2": "ancient-diluted-liquid-guilt",
     "CurrencyAddModToRare": "exalted",
     "CurrencyUpgradeToRare": "regal",
-    "CurrencyIdentification": "wisdom"
+    "CurrencyIdentification": "wisdom",
+    "FourBodyInt3Endgame": "four-body-int3-endgame",
+    "FourBootsInt2Endgame": "four-boots-int2-endgame",
+    "OmenOnAnnulRemoveAbyssMod": "omen-on-annul-remove-abyss-mod",
+    "OmenOnAbyssRerollOptions": "omen-on-abyss-reroll-options",
+    "MapKeyTier15": "map-key-tier15",
+    "RuneUpgrade": "rune-upgrade",
+    "JewelStr": "jewel-str",
+    "FourBow10": "four-bow10",
+    "JewelInt": "jewel-int",
+    "JewelDex": "jewel-dex",
+    "CurrencyVerisiumMetalUnique2": "currency-verisium-metal-unique2",
+    "FourQuarterstaff3Endgame": "four-quarterstaff3-endgame",
+    "FourHelmetDexInt5Endgame": "four-helmet-dex-int5-endgame",
+    "FourAmulet4": "four-amulet4",
+    "FourRing9": "four-ring9"
   }
 }
