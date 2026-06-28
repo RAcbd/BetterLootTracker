@@ -27,7 +27,7 @@ public sealed class BetterLootTrackerPlugin : PluginBase
 
     public override string Author => "Raff";
 
-    public override string Version => "1.9.3";
+    public override string Version => "1.9.4";
 
     public override void OnEnable(bool isGameOpened)
     {

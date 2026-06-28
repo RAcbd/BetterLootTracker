@@ -3,7 +3,7 @@
 OriathHub plugin for Path of Exile 2 that tracks currency loot per map and session, with NinjaPricer integration and an in-game HUD overlay.
 
 **Author:** Raff  
-**Version:** 1.9.3
+**Version:** 1.9.4
 
 ## Features
 
@@ -22,11 +22,12 @@ OriathHub plugin for Path of Exile 2 that tracks currency loot per map and sessi
 
 ## Install (binary)
 
-1. Download `BetterLootTracker.dll` from the repository [Releases](https://github.com/RAcbd/BetterLootTracker/releases) page, or build from source (below).
+1. Download `BetterLootTracker.dll` and `OriathPlugins.Common.dll` from the repository [Releases](https://github.com/RAcbd/BetterLootTracker/releases) page, or build from source (below).
 2. Copy the `BetterLootTracker` folder into your OriathHub `Plugins` directory:
    ```
    Plugins/BetterLootTracker/
      BetterLootTracker.dll
+     OriathPlugins.Common.dll
      config/settings.json.example   → copy to settings.json
      data/currency-names.json
    ```
