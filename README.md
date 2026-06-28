@@ -22,8 +22,8 @@ OriathHub plugin for Path of Exile 2 that tracks currency loot per map and sessi
 
 ## Install (binary)
 
-1. Download `BetterLootTracker.dll` and `OriathPlugins.Common.dll` from the repository [Releases](https://github.com/RAcbd/BetterLootTracker/releases) page, or build from source (below).
-2. Copy the `BetterLootTracker` folder into your OriathHub `Plugins` directory:
+1. Download **`BetterLootTracker-1.9.4.zip`** (recommended) or `BetterLootTracker.dll` + `OriathPlugins.Common.dll` from [Releases](https://github.com/RAcbd/BetterLootTracker/releases), or build from source (below).
+2. Extract or copy into your OriathHub `Plugins/` folder so you have:
    ```
    Plugins/BetterLootTracker/
      BetterLootTracker.dll
