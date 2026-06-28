@@ -17,17 +17,16 @@ Source-only repo. Flat layout — no nested `src/BetterLootTracker/`, no committ
 
 ```
 BetterLootTracker/
-  *.cs                 # plugin source
+  *.cs
   BetterLootTracker.csproj
-  OriathPlugins.Common/  # shared library (compiled + merged into BetterLootTracker.dll on Release)
-  build/               # ILRepack merge targets
+  SDK/                 # OriathHub.Sdk.nupkg (offline / Marketplace builds)
+  OriathPlugins.Common/
+  build/
 ```
 
-`config/settings.json` and `data/currency-names.json` are created automatically on first run. Default currency names are embedded in the DLL.
+Requires [.NET 10 SDK](https://dotnet.microsoft.com/download). The [OriathHub SDK](https://github.com/danthespal/OriathHubSDK) package is bundled in `SDK/` — no external setup needed to build.
 
 ## Build
-
-Requires [.NET 10 SDK](https://dotnet.microsoft.com/download) and [OriathHub SDK 0.10.1+](https://github.com/danthespal/OriathHubSDK). Marketplace supplies the SDK when building from source.
 
 ```powershell
 dotnet build BetterLootTracker.csproj -c Release

@@ -1,8 +1,7 @@
 <Project>
   <PropertyGroup>
-    <OriathHubDir Condition="'$(OriathHubDir)' == ''">$(MSBuildThisFileDirectory)..</OriathHubDir>
-    <OriathHubSdkVersion Condition="'$(OriathHubSdkVersion)' == ''">0.10.1</OriathHubSdkVersion>
+    <!-- Keep in sync with the OriathHub.Sdk package in SDK/. -->
+    <OriathHubSdkVersion>0.10.1</OriathHubSdkVersion>
+    <HostTfm>net10.0-windows</HostTfm>
   </PropertyGroup>
 </Project>
-
-
