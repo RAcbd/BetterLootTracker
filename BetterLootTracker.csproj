@@ -11,7 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OriathPlugins.Common\OriathPlugins.Common.csproj" />
+    <ProjectReference Include="OriathPlugins.Common\OriathPlugins.Common.csproj" />
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34" />
     <PackageReference Include="OriathHub.Sdk" Version="$(OriathHubSdkVersion)" />
   </ItemGroup>
 </Project>

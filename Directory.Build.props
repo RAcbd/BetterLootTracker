@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <OriathHubDir Condition="'$(OriathHubDir)' == ''">$(MSBuildThisFileDirectory)..</OriathHubDir>
+    <OriathHubSdkVersion Condition="'$(OriathHubSdkVersion)' == ''">0.10.1</OriathHubSdkVersion>
+  </PropertyGroup>
+</Project>
+
+

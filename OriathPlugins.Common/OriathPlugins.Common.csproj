@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>OriathPlugins.Common</RootNamespace>
+    <AssemblyName>OriathPlugins.Common</AssemblyName>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="OriathHub.Sdk" Version="$(OriathHubSdkVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\currency-names.json" />
+  </ItemGroup>
+
+  <!-- Keep every plugin folder on the same Common build (avoids mixed DLL crashes). -->
+  <Target
+    Name="DeployCommonToPluginFolders"
+    AfterTargets="Build"
+    Condition="Exists('$(OriathHubDir)')">
+    <ItemGroup>
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\AutoLoot" />
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\BetterLootTracker" />
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\MapRunReport" />
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\ValuableLootHighlight" />
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\InventoryWatch" />
+      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\MechanicFinder" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="$(TargetPath)"
+      DestinationFolder="%(_CommonDeployDirs.Identity)"
+      SkipUnchangedFiles="true"
+      ContinueOnError="WarnAndContinue" />
+  </Target>
+</Project>

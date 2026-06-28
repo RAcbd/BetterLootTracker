@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Merges OriathPlugins.Common into the plugin DLL on Release builds (single-DLL releases). -->
+  <Target Name="ILRepackPlugin" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <PropertyGroup>
+      <_CommonDll>$(OutputPath)OriathPlugins.Common.dll</_CommonDll>
+    </PropertyGroup>
+
+    <ItemGroup Condition="Exists('$(_CommonDll)')">
+      <_RepackInput Include="$(TargetPath)" />
+      <_RepackInput Include="$(_CommonDll)" />
+      <_RepackLibDirs Include="$(OutputPath)" />
+      <_RepackLibDirs Include="@(ReferencePathWithRefAssemblies)" Condition="'%(Filename)' == 'Newtonsoft.Json'" />
+    </ItemGroup>
+
+    <ILRepack
+      Condition="Exists('$(_CommonDll)')"
+      Parallel="true"
+      Internalize="true"
+      InputAssemblies="@(_RepackInput)"
+      OutputFile="$(TargetPath)"
+      TargetKind="Dll"
+      LibraryPath="@(_RepackLibDirs->'%(RootDir)%(Directory)')" />
+
+    <Delete Condition="Exists('$(_CommonDll)')" Files="$(_CommonDll)" />
+    <Delete Condition="Exists('$(_CommonDll).pdb')" Files="$(_CommonDll).pdb" />
+  </Target>
+</Project>

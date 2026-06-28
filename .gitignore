@@ -1,8 +1,10 @@
 # Build output
-src/**/bin/
-src/**/obj/
-[Bb]in/
-[Oo]bj/
+**/bin/
+**/obj/
+
+# Pre-built binaries and release zips (ship on GitHub Releases only)
+*.dll
+*.zip
 
 # IDE / OS
 .vs/
@@ -13,12 +15,5 @@ Thumbs.db
 .DS_Store
 
 # Runtime data (created by the plugin in-game)
-data/sessions/
-config/settings.json
-
-# Pre-built binaries and release zips (ship on GitHub Releases only)
-*.dll
-*.zip
-
-# Local dev artifacts
-agent-tools/
+config/
+data/
