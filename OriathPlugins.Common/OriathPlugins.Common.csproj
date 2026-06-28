@@ -18,24 +18,4 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\currency-names.json" />
   </ItemGroup>
-
-  <!-- Keep every plugin folder on the same Common build (avoids mixed DLL crashes). -->
-  <Target
-    Name="DeployCommonToPluginFolders"
-    AfterTargets="Build"
-    Condition="Exists('$(OriathHubDir)')">
-    <ItemGroup>
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\AutoLoot" />
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\BetterLootTracker" />
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\MapRunReport" />
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\ValuableLootHighlight" />
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\InventoryWatch" />
-      <_CommonDeployDirs Include="$(OriathHubDir)\Plugins\MechanicFinder" />
-    </ItemGroup>
-    <Copy
-      SourceFiles="$(TargetPath)"
-      DestinationFolder="%(_CommonDeployDirs.Identity)"
-      SkipUnchangedFiles="true"
-      ContinueOnError="WarnAndContinue" />
-  </Target>
 </Project>

@@ -15,4 +15,14 @@
     <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.34" />
     <PackageReference Include="OriathHub.Sdk" Version="$(OriathHubSdkVersion)" />
   </ItemGroup>
+
+  <Import Project="ILRepack.targets" />
+
+  <!-- Marketplace passes -p:OriathHubDir at build time; local builds use Directory.Build.props default. -->
+  <Target Name="CopyToHostPluginsDir" AfterTargets="Build" Condition="'$(OriathHubDir)' != ''">
+    <Copy SourceFiles="$(TargetPath)"
+          DestinationFolder="$(OriathHubDir)\Plugins\$(AssemblyName)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>

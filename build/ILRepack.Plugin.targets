@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Merges OriathPlugins.Common into the plugin DLL on Release builds (single-DLL releases). -->
-  <Target Name="ILRepackPlugin" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+  <Target Name="ILRepackPlugin" AfterTargets="Build" BeforeTargets="CopyToHostPluginsDir" Condition="'$(Configuration)' == 'Release'">
     <PropertyGroup>
       <_CommonDll>$(OutputPath)OriathPlugins.Common.dll</_CommonDll>
     </PropertyGroup>
