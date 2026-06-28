@@ -1,0 +1,30 @@
+{
+  "byPath": {
+    "CurrencyAddModToMagic": "Orb of Augmentation",
+    "CurrencyAddModToMagic2": "Greater Orb of Augmentation",
+    "CurrencyAddModToMagic3": "Perfect Orb of Augmentation",
+    "CurrencyCorrupt": "Vaal Orb",
+    "CurrencyVaal": "Vaal Orb",
+    "CurrencyRerollRare": "Chaos Orb",
+    "CurrencyModValues": "Divine Orb",
+    "CurrencyVerisiumMetal1": "Verisium",
+    "CurrencyAddModToRare": "Exalted Orb",
+    "CurrencyAddModToRare2": "Greater Exalted Orb",
+    "CurrencyAddModToRare3": "Perfect Exalted Orb",
+    "CurrencyRerollRare2": "Greater Chaos Orb",
+    "CurrencyRerollRare3": "Perfect Chaos Orb",
+    "CurrencyBreachShard": "Breach Splinter",
+    "AbyssalBenchTicketWeapon": "Preserved Jawbone",
+    "AbyssalBenchTicketJewel": "Preserved Cranium"
+  },
+  "byNinjaId": {
+    "aug": "Orb of Augmentation",
+    "vaal": "Vaal Orb",
+    "chaos": "Chaos Orb",
+    "divine": "Divine Orb"
+  },
+  "byPathNinjaId": {
+    "CurrencyAddModToRare2": "greater-exalted-orb",
+    "AbyssalBenchTicketJewel": "preserved-cranium"
+  }
+}
